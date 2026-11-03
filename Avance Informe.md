@@ -99,3 +99,19 @@ La propuesta es desafiante para el equipo por los siguientes motivos:
 3. **Implementar los TDA con buen rendimiento y reglas consistentes.** La tabla hash requiere una buena función de hash y redimensionamiento, el montículo debe mantener su orden, y el progreso se mantiene con contadores que deben actualizarse en cada cambio de estado, cumpliendo reglas como no completar una tarea con subtareas pendientes. Además, guardar y cargar el árbol desde CSV exige un formato que preserve la jerarquía.
 
 A pesar de esto, la propuesta es realizable porque puede construirse por etapas: primero mapas y listas con tareas simples, luego el árbol de subtareas y finalmente el montículo y los archivos.
+
+## 5. Por revisar
+
+Los principales objetivos por terminar, son la implementacion del codigo:
+**Alta prioridad :
+  1. **Definición de structs en un archivo C.
+  2. **Implementacion del TDA Mapa (Tabla Hash).
+  3. **Implementacion del TDA Arbol y listas enlazadas.
+  4. **Restricciones para el usuario.
+  5. **Menu interactivo desde consola.
+**Media prioridad :
+  1. **Implementación del monticulo minimo.
+  2. **Lectura y escritura del CSV.
+**Baja prioridad :
+  1. **Redactar bien el archivo README.md.
+  2. **Completar informe final.
