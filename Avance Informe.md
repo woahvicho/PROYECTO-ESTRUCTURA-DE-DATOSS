@@ -8,19 +8,18 @@ Ignacio Aracena · Nicolas Campos · Franco Gallo · Vicente Gonzalez · Antonio
 
 En proyectos donde participan varias personas, la información sobre el trabajo suele quedar dispersa: quién es responsable de cada actividad, qué plazos existen y cuánto se ha avanzado. Sin una vista centralizada, es difícil coordinar al equipo y detectar atrasos a tiempo.
 
-Este informe presenta el avance del proyecto : un gestor de tareas por consola. La aplicación organiza el trabajo en proyectos, que contienen tareas divisibles en subtareas. Cada tarea tiene descripción, responsable, fecha límite y estado (Por hacer, En proceso o Completado), lo que permite saber quién debe hacer qué, para cuándo y qué porcentaje del proyecto está terminado.
+En este informe presentamos nuestro avance del proyecto : Un gestor de tareas por la consola. La aplicación organiza el trabajo en proyectos, que contienen tareas divisibles en subtareas. Cada tarea tiene descripción, responsable, fecha límite y estado (Por hacer, En proceso o Completado), lo que permite saber quién debe hacer qué, para cuándo debe hacerlo y qué porcentaje del proyecto está avanzado o terminado.
 
 El usuario interactúa mediante un menú principal que ofrece gestión de proyectos, de tareas y de usuarios, consultas de tareas próximas a vencer y almacenamiento de datos en archivos CSV. La aplicación valida los datos ingresados y mantiene reglas de consistencia, como no permitir completar una tarea con subtareas pendientes.
 
-Técnicamente, el proyecto aplica los contenidos de estructuras de datos de la asignatura, eligiendo cada TDA según las operaciones más frecuentes: una tabla hash para búsquedas en tiempo promedio constante, listas enlazadas para las colecciones que se recorren completas, un árbol general para la jerarquía de tareas y un montículo mínimo para obtener las tareas con vencimiento más cercano. Su principal desafío es integrar estas estructuras de forma consistente y administrar memoria dinámica en C, aunque se considera realizable al poder construirse por etapas.
+A nivel técnico, el desarrollo consolida los aprendizajes de estructuras de datos (TDAs). Se seleccionó una tabla hash (Mapa) para garantizar búsquedas en tiempo promedio constante; listas enlazadas para colecciones iterables; un árbol general para poder modelar la dependencia jerárquica de las tareas; y un montículo mínimo para priorizar las fechas de vencimiento. El principal desafío técnico radica en la sincronización de estas múltiples referencias en memoria dinámica dentro del lenguaje C, mitigado mediante un desarrollo modular y por etapas.
 
-El informe se organiza así: la sección 2 describe la aplicación y sus funcionalidades; la sección 3, la solución propuesta (tipos de datos, TDA e implementación con su complejidad); y la sección 4, los aspectos desafiantes del proyecto.
-
+El documento se estructura de la siguiente manera: la sección 2 detalla las funcionalidades de la aplicación; la sección 3 describe la arquitectura de la solución, los tipos de datos y la complejidad temporal de las operaciones; y la sección 4 expone los principales desafíos técnicos identificados.
 ## 2. Descripción de la aplicación
 
-### 2.1. Descripción general
+### 2.1. Descripción de la aplicación
 
-La aplicación es un gestor de tareas por consola. Cada proyecto tiene nombre, descripción y fechas de inicio y fin, y contiene tareas que pueden dividirse en subtareas. Cada tarea tiene descripción, responsable, fecha límite y un estado (Por hacer, En proceso o Completado). La aplicación resuelve la falta de una vista centralizada del trabajo: permite saber quién debe hacer qué, para cuándo y qué porcentaje del proyecto está terminado.
+El sistema es un gestor por consola creado para centralizar el trabajo colaborativo. Los proyectos se definen por un nombre, descripción y un limite de tiempo (fechas de inicio y fin). Dentro de cada proyecto, las tareas operan como nodos de un árbol, permitiendo la creación de subtareas sin límite de profundidad. El sistema resuelve la dispersión de información al proporcionar métricas en tiempo real sobre el estado del proyecto y las cargas de trabajo por cada responsable.
 
 ### 2.2. Funcionalidades, menús e interacción con el usuario
 
