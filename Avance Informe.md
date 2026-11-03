@@ -8,7 +8,7 @@ Ignacio Aracena · Nicolas Campos · Franco Gallo · Vicente Gonzalez · Antonio
 
 En proyectos donde participan varias personas, la información sobre el trabajo suele quedar dispersa: quién es responsable de cada actividad, qué plazos existen y cuánto se ha avanzado. Sin una vista centralizada, es difícil coordinar al equipo y detectar atrasos a tiempo.
 
-Este informe presenta el avance del proyecto de la asignatura ICI1242 de la Escuela de Ingeniería Informática de la PUCV: un gestor de tareas por consola. La aplicación organiza el trabajo en proyectos, que contienen tareas divisibles en subtareas. Cada tarea tiene descripción, responsable, fecha límite y estado (Por hacer, En proceso o Completado), lo que permite saber quién debe hacer qué, para cuándo y qué porcentaje del proyecto está terminado.
+Este informe presenta el avance del proyecto : un gestor de tareas por consola. La aplicación organiza el trabajo en proyectos, que contienen tareas divisibles en subtareas. Cada tarea tiene descripción, responsable, fecha límite y estado (Por hacer, En proceso o Completado), lo que permite saber quién debe hacer qué, para cuándo y qué porcentaje del proyecto está terminado.
 
 El usuario interactúa mediante un menú principal que ofrece gestión de proyectos, de tareas y de usuarios, consultas de tareas próximas a vencer y almacenamiento de datos en archivos CSV. La aplicación valida los datos ingresados y mantiene reglas de consistencia, como no permitir completar una tarea con subtareas pendientes.
 
