@@ -1,3 +1,4 @@
+#PARA COMPILAR Y EJECUTAR EL PROGRAMA SE USA PRIMERO : "gcc main.c tda.c -o gestor" Y LUEGO ".\gestor.exe"
 
 //Antonio 06/11, 19:43//
 hola cabros, cree los esqueletos del programa, el main, los tdas y las estructuras, de momento compila y ejecuta todo(estoy en vsc), pero al elegir las opciones
