@@ -1,0 +1,111 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "tda.h"
+
+Mapa* mapa_global_proyectos = NULL;
+Mapa* mapa_global_usuarios = NULL;
+int generador_id_tareas = 1;
+
+void limpiarBuffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+void menuProyectos() {
+    int opcion;
+    do {
+        printf("\n--- 1. GESTION DE PROYECTOS ---\n");
+        printf("1. Crear proyecto\n2. Modificar proyecto\n3. Listar proyectos\n4. Ver progreso\n0. Volver\nOpcion: ");
+        if (scanf("%d", &opcion) != 1) { limpiarBuffer(); opcion = -1; }
+        limpiarBuffer();
+
+        switch (opcion) {
+            case 1: printf("\n[INFO] Crear proyecto...\n"); break;
+            case 2: printf("\n[INFO] Modificar proyecto...\n"); break;
+            case 3: printf("\n[INFO] Listar proyectos...\n"); break;
+            case 4: printf("\n[INFO] Ver progreso...\n"); break;
+            case 0: break;
+            default: printf("\n[ERROR] Invalido.\n");
+        }
+    } while (opcion != 0);
+}
+
+void menuTareas() {
+    int opcion;
+    do {
+        printf("\n--- 2. GESTION DE TAREAS ---\n");
+        printf("1. Agregar tarea/subtarea\n2. Modificar tarea\n3. Eliminar tarea\n4. Listar tareas\n5. Ver arbol\n0. Volver\nOpcion: ");
+        if (scanf("%d", &opcion) != 1) { limpiarBuffer(); opcion = -1; }
+        limpiarBuffer();
+
+        switch (opcion) {
+            case 1: printf("\n[INFO] Agregar tarea...\n"); break;
+            case 2: printf("\n[INFO] Modificar tarea...\n"); break;
+            case 3: printf("\n[INFO] Eliminar tarea...\n"); break;
+            case 4: printf("\n[INFO] Listar tareas...\n"); break;
+            case 5: printf("\n[INFO] Ver arbol...\n"); break;
+            case 0: break;
+            default: printf("\n[ERROR] Invalido.\n");
+        }
+    } while (opcion != 0);
+}
+
+void menuUsuarios() {
+    int opcion;
+    do {
+        printf("\n--- 3. GESTION DE USUARIOS ---\n");
+        printf("1. Registrar usuario\n2. Agregar a proyecto\n3. Ver tareas\n0. Volver\nOpcion: ");
+        if (scanf("%d", &opcion) != 1) { limpiarBuffer(); opcion = -1; }
+        limpiarBuffer();
+
+        switch (opcion) {
+            case 1: printf("\n[INFO] Registrar...\n"); break;
+            case 2: printf("\n[INFO] Agregar a proyecto...\n"); break;
+            case 3: printf("\n[INFO] Ver tareas...\n"); break;
+            case 0: break;
+            default: printf("\n[ERROR] Invalido.\n");
+        }
+    } while (opcion != 0);
+}
+
+void menuConsultas() {
+    int n;
+    printf("\n--- 4. CONSULTAS ---\nN tareas proximas a vencer: ");
+    if (scanf("%d", &n) == 1) {
+        printf("\n[INFO] Consultando monticulo...\n");
+    } else {
+        printf("\n[ERROR] Dato invalido.\n");
+    }
+    limpiarBuffer();
+}
+
+void menuArchivos() {
+    printf("\n--- 5. ARCHIVOS ---\n[INFO] Guardar/Cargar CSV...\n");
+}
+
+int main() {
+    mapa_global_proyectos = crearMapa(100);
+    mapa_global_usuarios = crearMapa(100);
+    int opcion = 0;
+
+    do {
+        printf("\n=== SISTEMA DE TAREAS Y PROYECTOS ===\n");
+        printf("1. Proyectos\n2. Tareas\n3. Usuarios\n4. Consultas\n5. Archivos\n0. Salir\nOpcion: ");
+        
+        if (scanf("%d", &opcion) != 1) { limpiarBuffer(); opcion = -1; }
+        limpiarBuffer();
+
+        switch (opcion) {
+            case 1: menuProyectos(); break;
+            case 2: menuTareas(); break;
+            case 3: menuUsuarios(); break;
+            case 4: menuConsultas(); break;
+            case 5: menuArchivos(); break;
+            case 0: printf("\nSaliendo...\n"); break;
+            default: printf("\n[ERROR] Opcion fuera de rango.\n");
+        }
+    } while (opcion != 0);
+
+    return 0;
+}
