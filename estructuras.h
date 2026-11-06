@@ -8,9 +8,9 @@ typedef struct NodoLista NodoLista;
 typedef struct Lista Lista;
 typedef struct NodoHash NodoHash;
 typedef struct Mapa Mapa;
-typedef struct Monticulo Monticulo; // [NUEVO] TDA Montículo Mínimo
+typedef struct Monticulo Monticulo;
 
-// TDA Lista (O(1) al insertar al final)[cite: 4]
+// TDA Lista (O(1) al insertar al final)
 struct NodoLista {
     void* dato;
     NodoLista* siguiente;
@@ -22,7 +22,7 @@ struct Lista {
     int size;
 };
 
-// TDA Mapa (Hash con encadenamiento)[cite: 4]
+// TDA Mapa (Hash con encadenamiento)
 struct NodoHash {
     char* clave;
     void* valor;
@@ -35,13 +35,13 @@ struct Mapa {
     int tamaño;
 };
 
-// Estructura Usuario[cite: 4]
+// Estructura Usuario
 struct Usuario {
     char nombre[50];
     Lista* tareas_asignadas;
 };
 
-// Estructura Tarea (Árbol general iterativo)[cite: 4]
+// Estructura Tarea (Árbol general iterativo)
 struct Tarea {
     int id;
     char descripcion[150];
@@ -52,7 +52,7 @@ struct Tarea {
     Lista* subtareas;
 };
 
-// Estructura Proyecto[cite: 4]
+// Estructura Proyecto
 struct Proyecto {
     char nombre[50];
     char descripcion[200];
@@ -65,7 +65,7 @@ struct Proyecto {
     int tareas_completadas;
 };
 
-// TDA Montículo Mínimo (O(n) construir, O(log n) extraer)[cite: 4]
+// TDA Montículo Mínimo (O(n) construir, O(log n) extraer)
 struct Monticulo {
     Tarea** arreglo;
     int capacidad;
