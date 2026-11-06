@@ -3,18 +3,18 @@
 
 #include "estructuras.h"
 
-// Funciones de Lista
+//funciones de lista
 Lista* crearLista();
 void insertarListaFinal(Lista* l, void* dato);
 
-// Funciones de Mapa
+//funciones de mapa
 Mapa* crearMapa(int capacidad);
 int hashString(Mapa* m, const char* clave);
 void redimensionarMapa(Mapa* m); // [NUEVO]
 void insertarMapa(Mapa* m, const char* clave, void* valor);
 void* buscarMapa(Mapa* m, const char* clave);
 
-// Funciones de Montículo Mínimo [NUEVO]
+//funcion de montículo mínimo
 Monticulo* crearMonticulo(int capacidad);
 int compararFechas(const char* f1, const char* f2);
 void insertarMonticulo(Monticulo* m, Tarea* t);
