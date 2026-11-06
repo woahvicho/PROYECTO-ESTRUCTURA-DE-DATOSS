@@ -9,11 +9,11 @@ si hacen algun avance dejenlo registrado aqui para saber con que seguir y que es
 cree la funcion de crear proyecto y de registrar usuarios, tambien arregle unos errores que no dejaban poner la fecha bien, pero ya esta ok, tambien aca abajo
 dejare una tabla de las cosas que ya estan listas y las que faltan: 
 
-# Estado del Proyecto
+## Estado del Proyecto
 ## 1. Módulo de Proyectos  
-- [LISTO] Crear proyecto
+- [X] Crear proyecto
 - [ ] Modificar proyecto
-- [LISTO] Listar proyectos
+- [X] Listar proyectos
 - [ ] Ver progreso
 
 ## 2. Módulo de Tareas
@@ -24,7 +24,7 @@ dejare una tabla de las cosas que ya estan listas y las que faltan:
 - [ ] Ver árbol
 
 ## 3. Módulo de Usuarios
-- [LISTO] Registrar usuario
+- [X] Registrar usuario
 - [ ] Agregar a proyecto
 - [ ] Ver tareas
 
