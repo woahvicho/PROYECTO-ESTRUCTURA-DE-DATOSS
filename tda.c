@@ -73,7 +73,6 @@ void redimensionarMapa(Mapa* m) {
 }
 
 void insertarMapa(Mapa* m, const char* clave, void* valor) {
-    // Regla del informe: Redimensionar si supera 0.75[cite: 4]
     float factor_carga = (float)(m->tamaño + 1) / m->capacidad;
     if (factor_carga > 0.75) {
         redimensionarMapa(m);
@@ -99,7 +98,7 @@ void* buscarMapa(Mapa* m, const char* clave) {
 }
 
 // ==========================================
-// TDA MONTICULO MINIMO (Fechas)
+// TDA MONTICULO MINIMO
 // ==========================================
 Monticulo* crearMonticulo(int capacidad) {
     Monticulo* m = (Monticulo*)malloc(sizeof(Monticulo));
