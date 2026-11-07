@@ -69,7 +69,39 @@ void menuProyectos() {
                 }
                 break;
             }
-            case 2: printf("\n[INFO] Modificar proyecto...\n"); break;
+            case 2: {
+                printf("\n--- MODIFICAR PROYECTO ---\n");
+                char nombre[50];
+                printf("Ingrese el nombre del proyecto a modificar: ");
+                leerCadena(nombre, 50);
+
+                Proyecto* p = (Proyecto*)buscarMapa(mapa_global_proyectos, nombre);
+                if (p == NULL) {
+                    printf("[ERROR] No se encontro ningun proyecto con el nombre '%s'.\n", nombre);
+                } else {
+                    printf("Proyecto encontrado. Ingrese los nuevos datos:\n");
+                    
+                    char desc[200], inicio[15], fin[15];
+                    printf("Nueva descripcion: ");
+                    leerCadena(desc, 200);
+                    
+                    printf("Nueva fecha de inicio (DD-MM-YYYY): ");
+                    leerCadena(inicio, 15);
+                    
+                    printf("Nueva fecha de fin (DD-MM-YYYY): ");
+                    leerCadena(fin, 15);
+
+                    if (compararFechas(inicio, fin) > 0) {
+                        printf("[ERROR] La fecha de termino no puede ser anterior a la de inicio. Modificacion cancelada.\n");
+                    } else {
+                        strcpy(p->descripcion, desc);
+                        strcpy(p->fecha_inicio, inicio);
+                        strcpy(p->fecha_fin, fin);
+                        printf("[EXITO] Proyecto '%s' actualizado correctamente.\n", nombre);
+                    }
+                }
+                break;
+            }
             case 3: {
                 printf("\n--- LISTA DE PROYECTOS ---\n");
                 if (mapa_global_proyectos->tamaño == 0) {
