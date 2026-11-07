@@ -9,10 +9,13 @@ si hacen algun avance dejenlo registrado aqui para saber con que seguir y que es
 cree la funcion de crear proyecto y de registrar usuarios, tambien arregle unos errores que no dejaban poner la fecha bien, pero ya esta ok, tambien aca abajo
 dejare una tabla de las cosas que ya estan listas y las que faltan: 
 
+//Antonio 07/11, 19:13//
+Añadí la función 2 en menuProyectos, la que modifica los proyectos ya existentes, hice que buscara el proyecto en la tabla hash, deja actualizar la descripción y las fechas de inicio-fin del proyecto, ahora tratare de hacer la función 4, la que es para ver el progreso, terminando eso quedaria lista la primera función(menuProyectos) y habría que seguir con la de tareas, usuarios, consultas y archivos, si alguno avanza recomiendo hacer la de archivos ya que es la mas facil de las que quedan.
+
 ## Estado del Proyecto
 ## 1. Módulo de Proyectos  
 - [X] Crear proyecto
-- [ ] Modificar proyecto
+- [X] Modificar proyecto
 - [X] Listar proyectos
 - [ ] Ver progreso
 
