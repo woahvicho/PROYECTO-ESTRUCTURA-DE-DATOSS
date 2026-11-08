@@ -69,6 +69,7 @@ void menuProyectos() {
                 }
                 break;
             }
+            //Antonio:Funcion para modificar proyectos que ya esten creados o registrados en el sistema
             case 2: {
                 printf("\n--- MODIFICAR PROYECTO ---\n");
                 char nombre[50];
@@ -102,6 +103,7 @@ void menuProyectos() {
                 }
                 break;
             }
+            //Antonio: tiene como funcion mostrar un resumen de los proyectos ya creados o registrados.
             case 3: {
                 printf("\n--- LISTA DE PROYECTOS ---\n");
                 if (mapa_global_proyectos->tamaño == 0) {
@@ -120,7 +122,32 @@ void menuProyectos() {
                 }
                 break;
             }
-            case 4: printf("\n[INFO] Ver progreso...\n"); break;
+            //Antonio:funcion para mostrar el progreso de los proyectos ya creados
+            case 4: {
+                printf("\n--- PROGRESO DE PROYECTOS ---\n");
+                if (mapa_global_proyectos->tamaño == 0) {
+                    printf("No hay proyectos que esten registrados en el sistema.\n");
+                } else {
+                    for (int i = 0; i < mapa_global_proyectos->capacidad; i++) {
+                        NodoHash* actual = mapa_global_proyectos->arreglo[i];
+                        while (actual != NULL) {
+                            Proyecto* p = (Proyecto*)actual->valor;
+                            int progreso = (p->total_tareas > 0) ? (p->tareas_completadas * 100 / p->total_tareas) : 0;
+                            
+                            printf("----------------------------------------\n");
+                            printf("Proyecto: %s\n", p->nombre);
+                            printf("Descripcion: %s\n", p->descripcion);
+                            printf("Fechas: %s al %s\n", p->fecha_inicio, p->fecha_fin);
+                            printf("Tareas completadas: %d / %d\n", p->tareas_completadas, p->total_tareas);
+                            printf("Progreso actual: %d%%\n", progreso);
+                            
+                            actual = actual->siguiente;
+                        }
+                    }
+                    printf("----------------------------------------\n");
+                }
+                break;
+            }
             case 0: break;
             default: printf("\n[ERROR] Invalido.\n");
         }
