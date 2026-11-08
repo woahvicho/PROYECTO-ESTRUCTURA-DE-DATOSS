@@ -32,7 +32,7 @@ struct NodoHash {
 struct Mapa {
     NodoHash** arreglo;
     int capacidad;
-    int tamaño;
+    int tamano;
 };
 
 // Estructura Usuario
@@ -69,7 +69,7 @@ struct Proyecto {
 struct Monticulo {
     Tarea** arreglo;
     int capacidad;
-    int tamaño;
+    int tamano;
 };
 
 #endif

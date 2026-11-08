@@ -106,7 +106,7 @@ void menuProyectos() {
             //Antonio: tiene como funcion mostrar un resumen de los proyectos ya creados o registrados.
             case 3: {
                 printf("\n--- LISTA DE PROYECTOS ---\n");
-                if (mapa_global_proyectos->tamaño == 0) {
+                if (mapa_global_proyectos->tamano == 0) {
                     printf("No hay proyectos registrados en el sistema.\n");
                 } else {
                     for (int i = 0; i < mapa_global_proyectos->capacidad; i++) {
@@ -125,7 +125,7 @@ void menuProyectos() {
             //Antonio:funcion para mostrar el progreso de los proyectos ya creados
             case 4: {
                 printf("\n--- PROGRESO DE PROYECTOS ---\n");
-                if (mapa_global_proyectos->tamaño == 0) {
+                if (mapa_global_proyectos->tamano == 0) {
                     printf("No hay proyectos que esten registrados en el sistema.\n");
                 } else {
                     for (int i = 0; i < mapa_global_proyectos->capacidad; i++) {

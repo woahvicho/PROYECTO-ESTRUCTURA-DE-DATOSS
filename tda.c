@@ -34,7 +34,7 @@ void insertarListaFinal(Lista* l, void* dato) {
 Mapa* crearMapa(int capacidad) {
     Mapa* m = (Mapa*)malloc(sizeof(Mapa));
     m->capacidad = capacidad;
-    m->tamaño = 0;
+    m->tamano = 0;
     m->arreglo = (NodoHash**)calloc(capacidad, sizeof(NodoHash*));
     return m;
 }
@@ -73,7 +73,7 @@ void redimensionarMapa(Mapa* m) {
 }
 
 void insertarMapa(Mapa* m, const char* clave, void* valor) {
-    float factor_carga = (float)(m->tamaño + 1) / m->capacidad;
+    float factor_carga = (float)(m->tamano + 1) / m->capacidad;
     if (factor_carga > 0.75) {
         redimensionarMapa(m);
     }
@@ -84,7 +84,7 @@ void insertarMapa(Mapa* m, const char* clave, void* valor) {
     nuevo->valor = valor;
     nuevo->siguiente = m->arreglo[indice];
     m->arreglo[indice] = nuevo;
-    m->tamaño++;
+    m->tamano++;
 }
 
 void* buscarMapa(Mapa* m, const char* clave) {
@@ -103,7 +103,7 @@ void* buscarMapa(Mapa* m, const char* clave) {
 Monticulo* crearMonticulo(int capacidad) {
     Monticulo* m = (Monticulo*)malloc(sizeof(Monticulo));
     m->capacidad = capacidad;
-    m->tamaño = 0;
+    m->tamano = 0;
     m->arreglo = (Tarea**)malloc(capacidad * sizeof(Tarea*));
     return m;
 }
@@ -118,11 +118,11 @@ int compararFechas(const char* f1, const char* f2) {
 }
 
 void insertarMonticulo(Monticulo* m, Tarea* t) {
-    if (m->tamaño == m->capacidad) return; 
+    if (m->tamano == m->capacidad) return; 
     
-    int i = m->tamaño;
+    int i = m->tamano;
     m->arreglo[i] = t;
-    m->tamaño++;
+    m->tamano++;
     
     while (i != 0 && compararFechas(m->arreglo[i]->fecha_limite, m->arreglo[(i - 1) / 2]->fecha_limite) < 0) {
         Tarea* temp = m->arreglo[i];
@@ -133,15 +133,15 @@ void insertarMonticulo(Monticulo* m, Tarea* t) {
 }
 
 Tarea* extraerMinimoMonticulo(Monticulo* m) {
-    if (m->tamaño <= 0) return NULL;
-    if (m->tamaño == 1) {
-        m->tamaño--;
+    if (m->tamano <= 0) return NULL;
+    if (m->tamano == 1) {
+        m->tamano--;
         return m->arreglo[0];
     }
     
     Tarea* raiz = m->arreglo[0];
-    m->arreglo[0] = m->arreglo[m->tamaño - 1];
-    m->tamaño--;
+    m->arreglo[0] = m->arreglo[m->tamano - 1];
+    m->tamano--;
     
     int i = 0;
     while (1) {
@@ -149,9 +149,9 @@ Tarea* extraerMinimoMonticulo(Monticulo* m) {
         int der = 2 * i + 2;
         int menor = i;
         
-        if (izq < m->tamaño && compararFechas(m->arreglo[izq]->fecha_limite, m->arreglo[menor]->fecha_limite) < 0)
+        if (izq < m->tamano && compararFechas(m->arreglo[izq]->fecha_limite, m->arreglo[menor]->fecha_limite) < 0)
             menor = izq;
-        if (der < m->tamaño && compararFechas(m->arreglo[der]->fecha_limite, m->arreglo[menor]->fecha_limite) < 0)
+        if (der < m->tamano && compararFechas(m->arreglo[der]->fecha_limite, m->arreglo[menor]->fecha_limite) < 0)
             menor = der;
             
         if (menor != i) {
