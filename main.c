@@ -20,7 +20,7 @@ void leerCadena(char* buffer, int max) {
 }
 
 
-//Antonio:Funcion para los proyectos
+//Antonio:Funcion para los proyectos.
 void menuProyectos() {
     int opcion;
     do {
