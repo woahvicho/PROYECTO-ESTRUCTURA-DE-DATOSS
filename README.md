@@ -126,3 +126,66 @@ Fecha de fin (DD-MM-YYYY): 30-11-2026
 [EXITO] Proyecto 'SistemaGestion' creado correctamente.
 ```
 
+**Paso 3:** Se asocia el usuario registrado como miembro del proyecto creado.
+
+```text
+--- 3. GESTION DE USUARIOS ---
+1. Registrar usuario
+2. Agregar a proyecto
+3. Ver tareas
+0. Volver
+Opcion: 2
+
+--- AGREGAR A PROYECTO ---
+Ingrese nombre del proyecto: SistemaGestion
+Ingrese el nombre del usuario: Antonio
+[EXITO] Usuario 'Antonio' agregado al proyecto.
+```
+
+**Paso 4:** Se consulta el resumen y progreso de los proyectos registrados en el sistema.
+
+```text
+--- 1. GESTION DE PROYECTOS ---
+1. Crear proyecto
+2. Modificar proyecto
+3. Mostrar lista de proyectos
+4. Ver progreso
+0. Volver
+Opcion: 4
+
+--- PROGRESO DE PROYECTOS ---
+----------------------------------------
+Proyecto: SistemaGestion
+Descripcion: Desarrollo de plataforma
+Fechas: 01-11-2026 al 30-11-2026
+Tareas completadas: 0 / 0
+Progreso actual: 0%
+----------------------------------------
+```
+
+**Paso 5:** Se guardan los datos actuales de usuarios, proyectos y membresías en `datos.csv`.
+
+```text
+--- 5. ARCHIVOS ---
+1. Guardar CSV
+2. Cargar CSV
+0. Volver
+Opcion: 1
+[EXITO] Datos guardados en 'datos.csv'.
+```
+
+**Paso 6:** Finaliza la ejecución del programa desde el menú principal.
+
+```text
+=== SISTEMA DE TAREAS Y PROYECTOS ===
+1. Proyectos
+2. Tareas
+3. Usuarios
+4. Consultas
+5. Archivos
+0. Salir
+Opcion: 0
+
+Saliendo...
+```
+
