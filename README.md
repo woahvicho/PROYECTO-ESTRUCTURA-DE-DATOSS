@@ -59,3 +59,16 @@ Visual Studio Code necesita un compilador GCC instalado por separado. Si la term
 No omita `archivo.c`: contiene las funciones de persistencia. Las cabeceras no se compilan por separado.
 
 **Nota:** `datos.csv` no es necesario para compilar. Debe existir para cargar datos; guardar lo crea o sobrescribe en la carpeta desde la que se ejecuta el programa.
+
+## Funcionalidades
+
+### Implementadas en el código
+
+- **Crear proyecto:** solicita nombre, descripción y fechas. Rechaza nombres repetidos y fecha final anterior a la inicial.
+- **Modificar proyecto:** actualiza descripción y fechas; no permite cambiar el nombre.
+- **Mostrar proyectos:** lista nombre, fechas y porcentaje de progreso.
+- **Ver progreso:** muestra todos los proyectos con descripción, fechas, tareas completadas y total. El porcentaje se calcula con división entera y no incluye desglose por cada estado.
+- **Registrar usuario:** solicita nombre y comprueba duplicados.
+- **Agregar a proyecto:** comprueba que usuario y proyecto existan y evita membresías repetidas.
+- **Ver tareas de usuario:** recorre sus tareas asignadas. En esta versión, esas tareas pueden incorporarse mediante carga CSV.
+- **Guardar/Cargar CSV:** conserva usuarios, proyectos, miembros y tareas en `datos.csv`.
