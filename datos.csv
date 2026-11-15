@@ -1,0 +1,29 @@
+USUARIO,Camila
+USUARIO,Matias
+USUARIO,Sofia
+USUARIO,Diego
+USUARIO,Valentina
+PROYECTO,FeriaIngenieria,Diseno de prototipo y stand para Feria de Ingenieria,01-11-2026,05-12-2026
+MIEMBRO,FeriaIngenieria,Camila
+MIEMBRO,FeriaIngenieria,Matias
+MIEMBRO,FeriaIngenieria,Sofia
+MIEMBRO,FeriaIngenieria,Diego
+TAREA,FeriaIngenieria,1,0,Cotizar y comprar componentes electronicos,Matias,08-11-2026,Completada
+TAREA,FeriaIngenieria,2,1,Comprar microcontrolador ESP32 y sensores,Matias,06-11-2026,Completada
+TAREA,FeriaIngenieria,3,0,Construir maqueta y circuito del prototipo,Diego,24-11-2026,En proceso
+TAREA,FeriaIngenieria,4,3,Imprimir carcasa en impresora 3D,Sofia,18-11-2026,Completada
+TAREA,FeriaIngenieria,5,3,Integrar sensores y calibrar lecturas,Diego,22-11-2026,En proceso
+TAREA,FeriaIngenieria,6,5,Realizar pruebas de bateria y consumo,Matias,21-11-2026,Por hacer
+TAREA,FeriaIngenieria,7,0,Preparar material visual para el stand,Camila,02-12-2026,Por hacer
+TAREA,FeriaIngenieria,8,7,Disenar poster tecnico con arquitectura del sistema,Camila,29-11-2026,En proceso
+TAREA,FeriaIngenieria,9,7,Imprimir tripticos informativos para visitantes,Sofia,01-12-2026,Por hacer
+PROYECTO,TorneoProgramacion,Organizacion de torneo universitario de programacion,10-11-2026,18-12-2026
+MIEMBRO,TorneoProgramacion,Camila
+MIEMBRO,TorneoProgramacion,Matias
+MIEMBRO,TorneoProgramacion,Valentina
+TAREA,TorneoProgramacion,10,0,Gestionar logistica y salas de computacion,Camila,25-11-2026,Completada
+TAREA,TorneoProgramacion,11,10,Solicitar reserva de laboratorios en facultad,Camila,19-11-2026,Completada
+TAREA,TorneoProgramacion,12,0,Elaborar set de problemas y casos de prueba,Valentina,10-12-2026,En proceso
+TAREA,TorneoProgramacion,13,12,Redactar enunciados de dificultad facil y media,Matias,04-12-2026,Completada
+TAREA,TorneoProgramacion,14,12,Configurar juez automatico y limites de tiempo,Valentina,09-12-2026,Por hacer
+TAREA,TorneoProgramacion,15,0,Abrir formulario de inscripcion para equipos,Matias,30-11-2026,En proceso

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "tda.h"
+#include "archivo.h"
 
 Mapa* mapa_global_proyectos = NULL;
 Mapa* mapa_global_usuarios = NULL;
@@ -25,7 +26,7 @@ void menuProyectos() {
     int opcion;
     do {
         printf("\n--- 1. GESTION DE PROYECTOS ---\n");
-        printf("1. Crear proyecto\n2. Modificar proyecto\n3. Listar proyectos\n4. Ver progreso\n0. Volver\nOpcion: ");
+        printf("1. Crear proyecto\n2. Modificar proyecto\n3. Mostrar lista de proyectos\n4. Ver progreso\n0. Volver\nOpcion: ");
         if (scanf("%d", &opcion) != 1) {opcion = -1; }
         limpiarBuffer();
 
@@ -158,7 +159,7 @@ void menuTareas() {
     int opcion;
     do {
         printf("\n--- 2. GESTION DE TAREAS ---\n");
-        printf("1. Agregar tarea/subtarea\n2. Modificar tarea\n3. Eliminar tarea\n4. Listar tareas\n5. Ver arbol\n0. Volver\nOpcion: ");
+        printf("1. Agregar tarea/subtarea\n2. Modificar tarea\n3. Eliminar tarea\n4. Mostrar tareas\n5. Ver arbol\n0. Volver\nOpcion: ");
         if (scanf("%d", &opcion) != 1) {opcion = -1; }
         limpiarBuffer();
 
@@ -166,7 +167,7 @@ void menuTareas() {
             case 1: printf("\n[INFO] Agregar tarea...\n"); break;
             case 2: printf("\n[INFO] Modificar tarea...\n"); break;
             case 3: printf("\n[INFO] Eliminar tarea...\n"); break;
-            case 4: printf("\n[INFO] Listar tareas...\n"); break;
+            case 4: printf("\n[INFO] Mostrar tareas...\n"); break;
             case 5: printf("\n[INFO] Ver arbol...\n"); break;
             case 0: break;
             default: printf("\n[ERROR] Invalido.\n");
@@ -202,8 +203,52 @@ void menuUsuarios() {
                 }
                 break;
             }
-            case 2: printf("\n[INFO] Agregar a proyecto...\n"); break;
-            case 3: printf("\n[INFO] Ver tareas...\n"); break;
+            case 2: {
+                printf("\n--- AGREGAR A PROYECTO ---\n");
+                char nombre_proyecto[50], nombre_usuario[50];
+                printf("Ingrese nombre del proyecto: ");
+                leerCadena(nombre_proyecto, 50);
+                printf("Ingrese el nombre del usuario: ");
+                leerCadena(nombre_usuario, 50);
+
+                Proyecto* p = (Proyecto*)buscarMapa(mapa_global_proyectos, nombre_proyecto);
+                Usuario* u = (Usuario*)buscarMapa(mapa_global_usuarios, nombre_usuario);
+
+                if (p == NULL) {
+                    printf("[ERROR] El proyecto '%s' no existe.\n", nombre_proyecto);
+                } else if (u == NULL) {
+                    printf("[ERROR] El usuario '%s' no esta registrado en el sistema.\n", nombre_usuario);
+                } else if (buscarMapa(p->mapa_miembros, nombre_usuario) != NULL) {
+                    printf("[ERROR] El usuario '%s' ya es miembro del proyecto.\n", nombre_usuario);
+                } else {
+                    insertarMapa(p->mapa_miembros, nombre_usuario, u);
+                    printf("[EXITO] Usuario '%s' agregado al proyecto.\n", nombre_usuario);
+                }
+                break;
+            }
+            case 3: {
+                printf("\n--- VER TAREAS DE USUARIO ---\n");
+                char nombre_usuario[50];
+                printf("Ingrese el nombre del usuario: ");
+                leerCadena(nombre_usuario, 50);
+
+                Usuario* u = (Usuario*)buscarMapa(mapa_global_usuarios, nombre_usuario);
+                if (u == NULL) {
+                    printf("[ERROR] El usuario '%s' no existe.\n", nombre_usuario);
+                } else if (u->tareas_asignadas->size == 0) {
+                    printf("El usuario '%s' no tiene tareas asignadas.\n", nombre_usuario);
+                } else {
+                    printf("Tareas asignadas a %s:\n", u->nombre);
+                    NodoLista* actual = u->tareas_asignadas->cabeza;
+                    while (actual != NULL) {
+                        Tarea* t = (Tarea*)actual->dato;
+                        printf("- [ID: %d] %s | Vence: %s | Estado: %s\n",
+                               t->id, t->descripcion, t->fecha_limite, t->estado);
+                        actual = actual->siguiente;
+                    }
+                }
+                break;
+            }
             case 0: break;
             default: printf("\n[ERROR] Invalido.\n");
         }
@@ -222,7 +267,20 @@ void menuConsultas() {
 }
 
 void menuArchivos() {
-    printf("\n--- 5. ARCHIVOS ---\n[INFO] Guardar/Cargar CSV...\n");
+    int opcion;
+    do {
+        printf("\n--- 5. ARCHIVOS ---\n");
+        printf("1. Guardar CSV\n2. Cargar CSV\n0. Volver\nOpcion: ");
+        if (scanf("%d", &opcion) != 1) { opcion = -1; }
+        limpiarBuffer();
+
+        switch (opcion) {
+            case 1: guardarCSV(mapa_global_proyectos, mapa_global_usuarios); break;
+            case 2: cargarCSV(mapa_global_proyectos, mapa_global_usuarios, &generador_id_tareas); break;
+            case 0: break;
+            default: printf("\n[ERROR] Invalido.\n");
+        }
+    } while (opcion != 0);
 }
 
 int main() {
