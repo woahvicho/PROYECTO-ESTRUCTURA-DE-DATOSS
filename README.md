@@ -18,3 +18,14 @@ Todos los siguientes archivos deben estar juntos en la misma carpeta para compil
 ```bash
 git clone <URL-DEL-REPOSITORIO>
 cd <NOMBRE-DE-LA-CARPETA>
+```
+
+Reemplace los valores entre ángulos por la URL y carpeta reales.
+
+## Descripción
+
+La versión actual permite gestionar proyectos y usuarios, registrar membresías y guardar o cargar datos. Las tareas pueden recuperarse desde CSV y consultarse por usuario. La gestión de tareas desde el menú y la consulta de vencimientos todavía no están implementadas, aunque existen las estructuras de árbol y montículo necesarias.
+
+## Cómo compilar y ejecutar el programa
+
+Descargue o clone el proyecto según las instrucciones anteriores. Necesita GCC instalado y disponible en la terminal.
