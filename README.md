@@ -74,3 +74,16 @@ No omita `archivo.c`: contiene las funciones de persistencia. Las cabeceras no s
 - **Guardar/Cargar CSV:** conserva usuarios, proyectos, miembros y tareas en `datos.csv`.
 
 ## Ejemplo de uso
+
+**inicio** El sistema muestra el menú principal, donde se puede acceder a los distintos módulos del sistema.
+
+```text
+=== SISTEMA DE TAREAS Y PROYECTOS ===
+1. Proyectos
+2. Tareas
+3. Usuarios
+4. Consultas
+5. Archivos
+0. Salir
+Opcion:
+```
