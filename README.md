@@ -87,3 +87,42 @@ No omita `archivo.c`: contiene las funciones de persistencia. Las cabeceras no s
 0. Salir
 Opcion:
 ```
+
+**Paso 1:** Se registra un usuario nuevo en el sistema validando que su nombre no esté duplicado.
+
+```text
+Opcion: 3
+
+--- 3. GESTION DE USUARIOS ---
+1. Registrar usuario
+2. Agregar a proyecto
+3. Ver tareas
+0. Volver
+Opcion: 1
+
+--- REGISTRAR USUARIO ---
+Ingrese el nombre del usuario: Antonio
+[EXITO] Usuario 'Antonio' registrado correctamente.
+```
+
+**Paso 2:** Se crea un proyecto ingresando su nombre, descripción y fechas de inicio y término.
+
+```text
+Opcion: 1
+
+--- 1. GESTION DE PROYECTOS ---
+1. Crear proyecto
+2. Modificar proyecto
+3. Mostrar lista de proyectos
+4. Ver progreso
+0. Volver
+Opcion: 1
+
+--- CREAR PROYECTO ---
+Ingrese nombre del proyecto: SistemaGestion
+Ingrese descripcion: Desarrollo de plataforma
+Fecha de inicio (DD-MM-YYYY): 01-11-2026
+Fecha de fin (DD-MM-YYYY): 30-11-2026
+[EXITO] Proyecto 'SistemaGestion' creado correctamente.
+```
+
