@@ -39,3 +39,23 @@ La versión actual permite gestionar proyectos y usuarios, registrar membresías
    ```powershell
    gcc --version
    ```
+
+### Forma de compilación del código
+
+1. En la terminal integrada de Visual Studio Code, ubicada en la carpeta del proyecto, compile:
+
+   ```powershell
+   gcc -Wall -Wextra main.c tda.c archivo.c -o gestor.exe
+   ```
+
+2. Si la compilación termina correctamente, ejecute:
+
+   ```powershell
+   .\gestor.exe
+   ```
+
+Visual Studio Code necesita un compilador GCC instalado por separado. Si la terminal no reconoce `gcc`, revise su instalación y configuración del PATH.
+
+No omita `archivo.c`: contiene las funciones de persistencia. Las cabeceras no se compilan por separado.
+
+**Nota:** `datos.csv` no es necesario para compilar. Debe existir para cargar datos; guardar lo crea o sobrescribe en la carpeta desde la que se ejecuta el programa.
