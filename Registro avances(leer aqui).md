@@ -19,6 +19,9 @@ Hola, termine el menú de los proyectos, ya esta al 100%, la probé hartas veces
 //Antonio 15-11, 16:10//
 termine el modulo 3(usuarios) y el modulo 5(archivos), añadi el archivo.h y archivo.c para el modulo 5, para cargar o exportar los datos, y tambien cree un CSV de ejemplo, se ve aca atras en el github, se llama datos.csv, solo falta el modulo 2(tareas), el modulo 4(consultas) y el README, recuerden que se envia hoy para que puedan terminarlo...(porfavor), tambien añadi en el tda.c y tda.h las funciones para eliminar listas o mapas en caso de pedirlo el usuario(modulo 2) ya que no la habia agregado antes.
 
+//Vicente 15-11, 18:09//
+**avance readme** se da por terminado el readme junto a franco, agregamos funcionalidades, guía de como correr el código y un ejemplo de uso.
+
 ## Estado del Proyecto
 ## 1. Módulo de Proyectos  
 - [X] Crear proyecto
