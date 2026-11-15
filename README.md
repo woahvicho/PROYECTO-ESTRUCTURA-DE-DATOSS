@@ -28,4 +28,14 @@ La versión actual permite gestionar proyectos y usuarios, registrar membresías
 
 ## Cómo compilar y ejecutar el programa
 
-Descargue o clone el proyecto según las instrucciones anteriores. Necesita GCC instalado y disponible en la terminal.
+### En Visual Studio Code
+
+1. Descargue o clone el proyecto siguiendo las instrucciones anteriores.
+2. Inicie **Visual Studio Code**.
+3. Seleccione `Archivo > Abrir carpeta...` y elija la carpeta del proyecto.
+4. Seleccione `Terminal > Nueva terminal` y utilice **PowerShell**.
+5. Compruebe que GCC esté instalado y disponible:
+
+   ```powershell
+   gcc --version
+   ```
