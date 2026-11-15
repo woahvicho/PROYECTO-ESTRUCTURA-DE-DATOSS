@@ -3,9 +3,9 @@
 #include <string.h>
 #include "tda.h"
 
-// ==========================================
+
 // TDA LISTA
-// ==========================================
+
 Lista* crearLista() {
     Lista* l = (Lista*)malloc(sizeof(Lista));
     l->cabeza = NULL;
@@ -28,9 +28,8 @@ void insertarListaFinal(Lista* l, void* dato) {
     l->size++;
 }
 
-// ==========================================
 // TDA MAPA
-// ==========================================
+
 Mapa* crearMapa(int capacidad) {
     Mapa* m = (Mapa*)malloc(sizeof(Mapa));
     m->capacidad = capacidad;
@@ -97,9 +96,9 @@ void* buscarMapa(Mapa* m, const char* clave) {
     return NULL;
 }
 
-// ==========================================
+
 // TDA MONTICULO MINIMO
-// ==========================================
+
 Monticulo* crearMonticulo(int capacidad) {
     Monticulo* m = (Monticulo*)malloc(sizeof(Monticulo));
     m->capacidad = capacidad;
@@ -164,4 +163,54 @@ Tarea* extraerMinimoMonticulo(Monticulo* m) {
         }
     }
     return raiz;
+
+}
+void eliminarLista(Lista* lista, void* dato) {
+    if (lista == NULL || lista->cabeza == NULL) return;
+
+    NodoLista* actual = lista->cabeza;
+    NodoLista* anterior = NULL;
+
+    while (actual != NULL) {
+        if (actual->dato == dato) {
+            if (anterior == NULL) {
+                lista->cabeza = actual->siguiente;
+            } else {
+                anterior->siguiente = actual->siguiente;
+            }
+            if (actual == lista->ultimo) {
+                lista->ultimo = anterior;
+            }
+
+            free(actual);
+            lista->size--;
+            return;
+        }
+        anterior = actual;
+        actual = actual->siguiente;
+    }
+}
+void eliminarMapa(Mapa* mapa, char* clave) {
+    if (mapa == NULL) return;
+
+    int indice = hashString(mapa, clave);
+    NodoHash* actual = mapa->arreglo[indice];
+    NodoHash* anterior = NULL;
+
+    while (actual != NULL) {
+        if (strcmp(actual->clave, clave) == 0) {
+            if (anterior == NULL) {
+                mapa->arreglo[indice] = actual->siguiente;
+            } else {
+                anterior->siguiente = actual->siguiente;
+            }
+
+            free(actual->clave);
+            free(actual);
+            mapa->tamano--;
+            return;
+        }
+        anterior = actual;
+        actual = actual->siguiente;
+    }
 }

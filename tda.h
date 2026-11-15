@@ -10,7 +10,7 @@ void insertarListaFinal(Lista* l, void* dato);
 //funciones de mapa
 Mapa* crearMapa(int capacidad);
 int hashString(Mapa* m, const char* clave);
-void redimensionarMapa(Mapa* m); // [NUEVO]
+void redimensionarMapa(Mapa* m);
 void insertarMapa(Mapa* m, const char* clave, void* valor);
 void* buscarMapa(Mapa* m, const char* clave);
 
@@ -19,5 +19,8 @@ Monticulo* crearMonticulo(int capacidad);
 int compararFechas(const char* f1, const char* f2);
 void insertarMonticulo(Monticulo* m, Tarea* t);
 Tarea* extraerMinimoMonticulo(Monticulo* m);
+
+void eliminarLista(Lista* lista, void* dato);
+void eliminarMapa(Mapa* mapa, char* clave);
 
 #endif
