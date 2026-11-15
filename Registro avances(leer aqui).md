@@ -1,4 +1,4 @@
-#PARA COMPILAR Y EJECUTAR EL PROGRAMA SE USA PRIMERO : "gcc main.c tda.c -o gestor" Y LUEGO ".\gestor.exe"
+#PARA COMPILAR Y EJECUTAR EL PROGRAMA SE USA PRIMERO : "gcc main.c tda.c archivo.c -o gestor" Y LUEGO ".\gestor.exe"
 
 //Antonio 06/11, 19:43//
 hola cabros, cree los esqueletos del programa, el main, los tdas y las estructuras, de momento compila y ejecuta todo(estoy en vsc), pero al elegir las opciones
@@ -14,6 +14,10 @@ Añadí la función 2 en menuProyectos, la que modifica los proyectos ya existen
 
 //Antonio 07/11 , 23:13//
 Hola, termine el menú de los proyectos, ya esta al 100%, la probé hartas veces antes de subirla aquí pero ya funciona todo bien, me demore ya que cuando estaba haciéndola pensé en que no tenia sentido programar el progreso si aun ni siquiera podemos crear tareas o asignarlas, así que deje la interfaz lista, con las funciones total_tareas y tareas_completadas, ambas parten en 0 por ahora ya que aun no se crean los casos para crear, asignar o modificar tareas, para que cuando hagamos el modulo de las tareas solo debamos actualizar esas variables y funcionara igual, de todas formas si tienen alguna duda o quieran saber como funciona me hablan nomas, faltaría los módulos: tareas, usuarios, consultas y archivos, yo puedo hacer el de archivos ya que no toma mucho tiempo, pero traten de avanzar los demas.
+
+
+//Antonio 15-11, 16:10//
+termine el modulo 3(usuarios) y el modulo 5(archivos), añadi el archivo.h y archivo.c para el modulo 5, para cargar o exportar los datos, y tambien cree un CSV de ejemplo, se ve aca atras en el github, se llama datos.csv, solo falta el modulo 2(tareas), el modulo 4(consultas) y el README, recuerden que se envia hoy para que puedan terminarlo...(porfavor), tambien añadi en el tda.c y tda.h las funciones para eliminar listas o mapas en caso de pedirlo el usuario(modulo 2) ya que no la habia agregado antes.
 
 ## Estado del Proyecto
 ## 1. Módulo de Proyectos  
@@ -31,11 +35,11 @@ Hola, termine el menú de los proyectos, ya esta al 100%, la probé hartas veces
 
 ## 3. Módulo de Usuarios
 - [X] Registrar usuario
-- [ ] Agregar a proyecto
-- [ ] Ver tareas
+- [X] Agregar a proyecto
+- [X] Ver tareas
 
 ## 4. Módulo de Consultas
 - [ ] N tareas próximas a vencer
 
 ## 5. Módulo de Archivos
-- [ ] Guardar/Cargar CSV
+- [X] Guardar/Cargar CSV
