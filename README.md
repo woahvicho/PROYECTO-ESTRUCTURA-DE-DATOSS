@@ -72,3 +72,5 @@ No omita `archivo.c`: contiene las funciones de persistencia. Las cabeceras no s
 - **Agregar a proyecto:** comprueba que usuario y proyecto existan y evita membresías repetidas.
 - **Ver tareas de usuario:** recorre sus tareas asignadas. En esta versión, esas tareas pueden incorporarse mediante carga CSV.
 - **Guardar/Cargar CSV:** conserva usuarios, proyectos, miembros y tareas en `datos.csv`.
+
+## Ejemplo de uso
