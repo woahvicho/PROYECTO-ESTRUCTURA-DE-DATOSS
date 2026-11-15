@@ -75,7 +75,7 @@ No omita `archivo.c`: contiene las funciones de persistencia. Las cabeceras no s
 
 ## Ejemplo de uso
 
-**inicio** El sistema muestra el menú principal, donde se puede acceder a los distintos módulos del sistema.
+**inicio:** El sistema muestra el menú principal, donde se puede acceder a los distintos módulos del sistema.
 
 ```text
 === SISTEMA DE TAREAS Y PROYECTOS ===
