@@ -441,7 +441,84 @@ void menuTareas() {
                 free(por_borrar);
                 break;
             }
-            case 4: printf("\n[INFO] Mostrar tareas...\n"); break;
+            case 4: {
+                printf("\n--- LISTAR TAREAS ---\n");
+                char nombre_proyecto[50];
+                int criterio;
+
+                printf("Ingrese nombre del proyecto: ");
+                leerCadena(nombre_proyecto, 50);
+
+                Proyecto* p = (Proyecto*)buscarMapa(mapa_global_proyectos, nombre_proyecto);
+                if (p == NULL) {
+                    printf("[ERROR] El proyecto '%s' no existe.\n", nombre_proyecto);
+                    break;
+                }
+                if (p->total_tareas == 0) {
+                    printf("El proyecto '%s' no tiene tareas.\n", nombre_proyecto);
+                    break;
+                }
+
+                printf("Ordenar por:\n1. Fecha limite\n2. Estado\n3. Responsable\nOpcion: ");
+                if (scanf("%d", &criterio) != 1) { criterio = -1; }
+                limpiarBuffer();
+
+                if (criterio < 1 || criterio > 3) {
+                    printf("[ERROR] Criterio invalido.\n");
+                    break;
+                }
+
+                Tarea** arreglo = (Tarea**)malloc(p->total_tareas * sizeof(Tarea*));
+                Tarea** aux = (Tarea**)malloc(p->total_tareas * sizeof(Tarea*));
+                int n = 0;
+
+                NodoLista* raiz = p->tareas_nivel_1->cabeza;
+                while (raiz != NULL) {
+                    arreglo[n++] = (Tarea*)raiz->dato;
+                    raiz = raiz->siguiente;
+                }
+                for (int i = 0; i < n; i++) {
+                    NodoLista* hijo = arreglo[i]->subtareas->cabeza;
+                    while (hijo != NULL) {
+                        arreglo[n++] = (Tarea*)hijo->dato;
+                        hijo = hijo->siguiente;
+                    }
+                }
+
+                for (int ancho = 1; ancho < n; ancho *= 2) {
+                    for (int ini = 0; ini < n; ini += 2 * ancho) {
+                        int medio = ini + ancho;
+                        if (medio > n) medio = n;
+                        int fin = ini + 2 * ancho;
+                        if (fin > n) fin = n;
+
+                        int i = ini, j = medio, k = ini;
+                        while (i < medio && j < fin) {
+                            int cmp;
+                            if (criterio == 1) cmp = compararFechas(arreglo[i]->fecha_limite, arreglo[j]->fecha_limite);
+                            else if (criterio == 2) cmp = strcmp(arreglo[i]->estado, arreglo[j]->estado);
+                            else cmp = strcmp(arreglo[i]->responsable->nombre, arreglo[j]->responsable->nombre);
+
+                            if (cmp <= 0) aux[k++] = arreglo[i++];
+                            else aux[k++] = arreglo[j++];
+                        }
+                        while (i < medio) aux[k++] = arreglo[i++];
+                        while (j < fin) aux[k++] = arreglo[j++];
+                    }
+                    for (int k = 0; k < n; k++) arreglo[k] = aux[k];
+                }
+
+                printf("\nTareas de '%s':\n", p->nombre);
+                for (int i = 0; i < n; i++) {
+                    Tarea* t = arreglo[i];
+                    printf("- [ID: %d] %s | Responsable: %s | Vence: %s | Estado: %s\n",
+                           t->id, t->descripcion, t->responsable->nombre, t->fecha_limite, t->estado);
+                }
+
+                free(arreglo);
+                free(aux);
+                break;
+            }
             case 5: {
                 printf("\n--- ARBOL DE TAREAS ---\n");
                 char nombre_proyecto[50];
@@ -457,7 +534,6 @@ void menuTareas() {
                 } else {
                     printf("Proyecto: %s\n", p->nombre);
 
-                    //Recorrido en profundidad iterativo: iter[prof] guarda el siguiente nodo por visitar en cada nivel.
                     NodoLista** iter = (NodoLista**)malloc((p->total_tareas + 1) * sizeof(NodoLista*));
                     int prof = 0;
                     iter[0] = p->tareas_nivel_1->cabeza;
