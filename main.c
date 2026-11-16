@@ -255,12 +255,35 @@ void menuUsuarios() {
     } while (opcion != 0);
 }
 
-void menuConsultas() {
+static int recorrerTareasPendientes(Monticulo* h) 
+{
+    (void)h;
+    int contador = 0;
+
+    for (int i = 0; i < mapa_global_proyectos->capacidad; i++) 
+    {
+        NodoHash* np = mapa_global_proyectos->arreglo[i];
+        while (np != NULL) 
+        {
+            Proyecto* p = (Proyecto*)np->valor;
+            (void)p;
+            np = np->siguiente;d
+        }
+    }
+    return contador;
+}
+
+
+void menuConsultas() 
+{
     int n;
     printf("\n--- 4. CONSULTAS ---\nN tareas proximas a vencer: ");
-    if (scanf("%d", &n) == 1) {
+    if (scanf("%d", &n) == 1) 
+    {
         printf("\n[INFO] Consultando monticulo...\n");
-    } else {
+    } 
+    else 
+    {
         printf("\n[ERROR] Dato invalido.\n");
     }
     limpiarBuffer();
