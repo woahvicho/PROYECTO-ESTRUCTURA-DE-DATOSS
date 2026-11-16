@@ -442,7 +442,48 @@ void menuTareas() {
                 break;
             }
             case 4: printf("\n[INFO] Mostrar tareas...\n"); break;
-            case 5: printf("\n[INFO] Ver arbol...\n"); break;
+            case 5: {
+                printf("\n--- ARBOL DE TAREAS ---\n");
+                char nombre_proyecto[50];
+
+                printf("Ingrese nombre del proyecto: ");
+                leerCadena(nombre_proyecto, 50);
+
+                Proyecto* p = (Proyecto*)buscarMapa(mapa_global_proyectos, nombre_proyecto);
+                if (p == NULL) {
+                    printf("[ERROR] El proyecto '%s' no existe.\n", nombre_proyecto);
+                } else if (p->total_tareas == 0) {
+                    printf("El proyecto '%s' no tiene tareas.\n", nombre_proyecto);
+                } else {
+                    printf("Proyecto: %s\n", p->nombre);
+
+                    //Recorrido en profundidad iterativo: iter[prof] guarda el siguiente nodo por visitar en cada nivel.
+                    NodoLista** iter = (NodoLista**)malloc((p->total_tareas + 1) * sizeof(NodoLista*));
+                    int prof = 0;
+                    iter[0] = p->tareas_nivel_1->cabeza;
+
+                    while (prof >= 0) {
+                        NodoLista* actual = iter[prof];
+                        if (actual == NULL) {
+                            prof--;
+                            continue;
+                        }
+                        iter[prof] = actual->siguiente;
+
+                        Tarea* t = (Tarea*)actual->dato;
+                        for (int i = 0; i <= prof; i++) printf("    ");
+                        printf("- [ID: %d] %s (%s | %s | %s)\n",
+                               t->id, t->descripcion, t->responsable->nombre, t->fecha_limite, t->estado);
+
+                        if (t->subtareas->cabeza != NULL) {
+                            prof++;
+                            iter[prof] = t->subtareas->cabeza;
+                        }
+                    }
+                    free(iter);
+                }
+                break;
+            }
             case 0: break;
             default: printf("\n[ERROR] Invalido.\n");
         }
