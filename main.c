@@ -294,15 +294,15 @@ void menuConsultas()
 {
     int n;
     printf("\n--- 4. CONSULTAS ---\nN tareas proximas a vencer: ");
-    if (scanf("%d", &n) == 1) 
+    if (scanf("%d", &n) != 1 || n <= 0) 
     {
-        printf("\n[INFO] Consultando monticulo...\n");
+        printf("\n[ERROR] Dato invalido. Ingrese un numero mayor a 0.\n");
+        limpiarBuffer();
+        return;
     } 
-    else 
-    {
-        printf("\n[ERROR] Dato invalido.\n");
-    }
     limpiarBuffer();
+
+    printf("\n[INFO] Consultando monticulo...\n");
 }
 
 void menuArchivos() {
