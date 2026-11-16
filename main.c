@@ -315,6 +315,14 @@ void menuConsultas()
 
     Monticulo* h = crearMonticulo(total);
     recorrerTareasPendientes(h);
+
+    printf("\nLas %d tareas mas proximas a vencer:\n", n);
+
+    for (int k = 0; k < n && k < total; k++) 
+    {
+        Tarea* t = extraerMinimoMonticulo(h);
+        printf("%d. [ID: %d] %s | Vence: %s | Estado: %s\n", k + 1, t->id, t->descripcion, t->fecha_limite, t->estado);
+    }
 }
 
 void menuArchivos() {
