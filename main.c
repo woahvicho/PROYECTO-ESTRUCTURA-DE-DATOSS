@@ -316,6 +316,11 @@ void menuConsultas()
     Monticulo* h = crearMonticulo(total);
     recorrerTareasPendientes(h);
 
+    if (n > total) 
+    {
+        printf("\n[INFO] Solo hay %d tareas pendientes, se mostraran todas.\n", total);
+    }
+
     printf("\nLas %d tareas mas proximas a vencer:\n", n);
 
     for (int k = 0; k < n && k < total; k++) 
