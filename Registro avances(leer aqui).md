@@ -44,7 +44,7 @@ termine el modulo 3(usuarios) y el modulo 5(archivos), añadi el archivo.h y arc
 - [X] Ver tareas
 
 ## 4. Módulo de Consultas
-- [ ] N tareas próximas a vencer
+- [X] N tareas próximas a vencer
 
 ## 5. Módulo de Archivos
 - [X] Guardar/Cargar CSV
