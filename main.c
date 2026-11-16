@@ -266,8 +266,20 @@ static int recorrerTareasPendientes(Monticulo* h)
         while (np != NULL) 
         {
             Proyecto* p = (Proyecto*)np->valor;
-            (void)p;
-            np = np->siguiente;d
+
+            for (int j = 0; j < p->mapa_tareas_id->capacidad; j++) 
+            {
+                NodoHash* nt = p->mapa_tareas_id->arreglo[j];
+
+                while (nt != NULL) 
+                {
+                    Tarea* t = (Tarea*)nt->valor;
+                    (void)t;
+                    contador++;
+                    nt = nt->siguiente;
+                }
+            }
+            np = np->siguiente;
         }
     }
     return contador;
