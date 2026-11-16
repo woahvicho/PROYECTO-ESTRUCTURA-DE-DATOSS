@@ -257,12 +257,12 @@ void menuUsuarios() {
 
 static int recorrerTareasPendientes(Monticulo* h) 
 {
-    (void)h;
     int contador = 0;
 
     for (int i = 0; i < mapa_global_proyectos->capacidad; i++) 
     {
         NodoHash* np = mapa_global_proyectos->arreglo[i];
+
         while (np != NULL) 
         {
             Proyecto* p = (Proyecto*)np->valor;
@@ -274,8 +274,12 @@ static int recorrerTareasPendientes(Monticulo* h)
                 while (nt != NULL) 
                 {
                     Tarea* t = (Tarea*)nt->valor;
-                    (void)t;
-                    contador++;
+
+                    if (strcmp(t->estado, "Completada") != 0) 
+                    {
+                        if (h != NULL) insertarMonticulo(h, t);
+                        contador++;
+                    }
                     nt = nt->siguiente;
                 }
             }
