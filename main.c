@@ -164,7 +164,88 @@ void menuTareas() {
         limpiarBuffer();
 
         switch (opcion) {
-            case 1: printf("\n[INFO] Agregar tarea...\n"); break;
+            case 1: {
+                printf("\n--- AGREGAR TAREA/SUBTAREA ---\n");
+                char nombre_proyecto[50], nombre_usuario[50];
+                char desc[150], fecha[15], clave[20];
+                int id_padre;
+
+                printf("Ingrese nombre del proyecto: ");
+                leerCadena(nombre_proyecto, 50);
+
+                Proyecto* p = (Proyecto*)buscarMapa(mapa_global_proyectos, nombre_proyecto);
+                if (p == NULL) {
+                    printf("[ERROR] El proyecto '%s' no existe.\n", nombre_proyecto);
+                    break;
+                }
+
+                printf("ID de la tarea padre (0 si es una tarea de primer nivel): ");
+                if (scanf("%d", &id_padre) != 1) { id_padre = -1; }
+                limpiarBuffer();
+
+                Tarea* padre = NULL;
+                if (id_padre != 0) {
+                    sprintf(clave, "%d", id_padre);
+                    padre = (Tarea*)buscarMapa(p->mapa_tareas_id, clave);
+                    if (padre == NULL) {
+                        printf("[ERROR] No existe una tarea con ID %d en el proyecto.\n", id_padre);
+                        break;
+                    }
+                }
+
+                printf("Ingrese descripcion: ");
+                leerCadena(desc, 150);
+
+                printf("Ingrese el nombre del responsable: ");
+                leerCadena(nombre_usuario, 50);
+
+                Usuario* u = (Usuario*)buscarMapa(mapa_global_usuarios, nombre_usuario);
+                if (u == NULL) {
+                    printf("[ERROR] El usuario '%s' no esta registrado en el sistema.\n", nombre_usuario);
+                    break;
+                }
+                if (buscarMapa(p->mapa_miembros, nombre_usuario) == NULL) {
+                    printf("[ERROR] El usuario '%s' no es miembro del proyecto.\n", nombre_usuario);
+                    break;
+                }
+
+                printf("Fecha limite (DD-MM-YYYY): ");
+                leerCadena(fecha, 15);
+                if (strlen(fecha) != 10) {
+                    printf("[ERROR] Formato de fecha invalido. Use DD-MM-YYYY.\n");
+                    break;
+                }
+
+                Tarea* t = (Tarea*)malloc(sizeof(Tarea));
+                t->id = generador_id_tareas++;
+                strcpy(t->descripcion, desc);
+                strcpy(t->fecha_limite, fecha);
+                strcpy(t->estado, "Por hacer");
+                t->responsable = u;
+                t->padre = padre;
+                t->subtareas = crearLista();
+
+                if (padre == NULL) {
+                    insertarListaFinal(p->tareas_nivel_1, t);
+                } else {
+                    insertarListaFinal(padre->subtareas, t);
+
+                    Tarea* anc = padre;
+                    while (anc != NULL && strcmp(anc->estado, "Completado") == 0) {
+                        strcpy(anc->estado, "En proceso");
+                        p->tareas_completadas--;
+                        anc = anc->padre;
+                    }
+                }
+
+                sprintf(clave, "%d", t->id);
+                insertarMapa(p->mapa_tareas_id, clave, t);
+                insertarListaFinal(u->tareas_asignadas, t);
+                p->total_tareas++;
+
+                printf("[EXITO] Tarea creada con ID %d.\n", t->id);
+                break;
+            }
             case 2: printf("\n[INFO] Modificar tarea...\n"); break;
             case 3: printf("\n[INFO] Eliminar tarea...\n"); break;
             case 4: printf("\n[INFO] Mostrar tareas...\n"); break;
@@ -315,11 +396,6 @@ void menuConsultas()
 
     Monticulo* h = crearMonticulo(total);
     recorrerTareasPendientes(h);
-
-    if (n > total) 
-    {
-        printf("\n[INFO] Solo hay %d tareas pendientes, se mostraran todas.\n", total);
-    }
 
     printf("\nLas %d tareas mas proximas a vencer:\n", n);
 
