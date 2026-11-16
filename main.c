@@ -294,15 +294,27 @@ void menuConsultas()
 {
     int n;
     printf("\n--- 4. CONSULTAS ---\nN tareas proximas a vencer: ");
+
     if (scanf("%d", &n) != 1 || n <= 0) 
     {
         printf("\n[ERROR] Dato invalido. Ingrese un numero mayor a 0.\n");
         limpiarBuffer();
         return;
     } 
+
     limpiarBuffer();
 
     printf("\n[INFO] Consultando monticulo...\n");
+
+    int total = recorrerTareasPendientes(NULL);
+    if (total == 0)
+    {
+        printf("No hay tareas pendientes.\n");
+        return;
+    } 
+
+    Monticulo* h = crearMonticulo(total);
+    recorrerTareasPendientes(h);
 }
 
 void menuArchivos() {
